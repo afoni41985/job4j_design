@@ -24,7 +24,9 @@ public class ListUtils {
             if (i.nextIndex() == index) {
                 i.next();
                 i.add(value);
+                break;
             }
+            i.next();
         }
     }
 
