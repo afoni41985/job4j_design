@@ -10,7 +10,10 @@ import java.util.function.Predicate;
 
 public class Search {
     public static void main(String[] args) throws IOException {
-        Path start = Path.of(".");
+        if (args.length < 2) {
+            throw new IllegalArgumentException("The root folder and the file extension is null. Usage java -jar dir.jar ROOT_FOLDER.");
+        }
+        Path start = Path.of(args[0]);
         search(start, p -> p.toFile().getName().endsWith("txt")).forEach(System.out::println);
     }
 
