@@ -5,9 +5,12 @@ import java.util.Objects;
 
 public class Dir {
     public static void main(String[] args) {
-        if (args.length == 0) {
-            throw new IllegalArgumentException("Root folder is null. Usage java -jar dir.jar ROOT_FOLDER.");
+        if (args.length < 2) {
+            throw new IllegalArgumentException(
+                    "Root folder is null or/and File extension not specified. "
+                            + "Usage java -jar search.jar ROOT_FOLDER FILE_EXTENSION");
         }
+
         File file = new File(args[0]);
         if (!file.exists()) {
             throw new IllegalArgumentException(String.format("Not exist %s", file.getAbsoluteFile()));
