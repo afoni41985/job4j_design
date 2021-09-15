@@ -11,26 +11,24 @@ public class Analyze {
         int crash = 400;
         try (var in = new BufferedReader(new FileReader(source));
              var out = new PrintWriter(new FileWriter(target))) {
+            StringBuilder sb = new StringBuilder();
             String line;
-            var startIsFound = false;
             while ((line = in.readLine()) != null) {
                 String[] words = line.split(" ");
-                if (!startIsFound) {
-                    if (Integer.parseInt(words[0]) >= crash) {
-                        out.printf("%s;", words[1]);
-                        startIsFound = true;
-                    }
-                } else  if (Integer.parseInt(words[0]) < crash) {
-                    out.printf("%s;%n", words[1]);
-                    startIsFound = false;
+                if (sb.length() == 0 && Integer.parseInt(words[0]) >= crash) {
+                    sb.append(words[1]).append(";");
+                }
+                if (sb.length() > 0 && Integer.parseInt(words[0]) < crash) {
+                    sb.append(words[1]).append(";");
+                    out.println(sb);
+                    sb = new StringBuilder();
                 }
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     public static void main(String[] args) {
         Analyze analyze = new Analyze();
