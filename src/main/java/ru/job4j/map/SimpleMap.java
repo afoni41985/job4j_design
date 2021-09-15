@@ -77,7 +77,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean remove(K key) {
-        if (key == null) {
+        if (key == null && table[0] != null) {
             table[0] = null;
             count--;
             modCount++;
