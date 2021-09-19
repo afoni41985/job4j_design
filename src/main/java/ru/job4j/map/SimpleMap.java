@@ -19,7 +19,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean put(K key, V value) {
-        if (key == null) {
+        if (table[0] == null && key == null) {
             table[0] = new MapEntry<>(null, value);
             count++;
             modCount++;
@@ -55,8 +55,6 @@ public class SimpleMap<K, V> implements Map<K, V> {
         for (MapEntry<K, V> el : tmp) {
             if (el != null) {
                 put(el.key, el.value);
-                count++;
-                modCount++;
             }
         }
     }
@@ -85,7 +83,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
         }
         int hash = hash(key.hashCode());
         int position = indexFor(hash);
-        if (table[position].key.equals(key)) {
+        if (table[position].key.equals(key) && table[position] != null) {
             table[position] = null;
             count--;
             modCount++;
@@ -103,13 +101,10 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
             @Override
             public boolean hasNext() {
-                for (MapEntry<K, V> el : table) {
-                    if (el != null) {
-                        point++;
-                        break;
-                    }
+                while (point < table.length && table[point] == null) {
+                    point++;
                 }
-                return point < count;
+                return point < table.length;
             }
 
             @Override
