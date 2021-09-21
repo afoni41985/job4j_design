@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<store check="tru" personal ="10">
+<store check="true" personal ="10">
     <address address ="ул.Колотушкина"/>
     <ranges>
         <range>games</range>
