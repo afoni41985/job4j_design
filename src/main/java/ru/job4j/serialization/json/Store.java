@@ -2,9 +2,13 @@ package ru.job4j.serialization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Store {
     private final boolean check;
@@ -17,6 +21,14 @@ public class Store {
         this.address = address;
         this.personal = personal;
         this.range = range;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public int getPersonal() {
+        return personal;
     }
 
     @Override
@@ -39,5 +51,23 @@ public class Store {
                 + "\"personal\":10,\"range\":[\"games\",\"balls\"]}";
         final Store storeMod = gson.fromJson(storeGson, Store.class);
         System.out.println(storeMod);
+
+        JSONObject jsonAddress = new JSONObject("{\"address\":\"ул.Колотушкина\"}");
+
+        List<String> list = new ArrayList<>();
+        list.add("как");
+        list.add("все");
+        list.add("запомнить");
+        JSONArray jsonRange = new JSONArray(list);
+
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("chek", store.isCheck());
+        jsonObject.put("personal", store.getPersonal());
+        jsonObject.put("address", jsonAddress);
+        jsonObject.put("range", jsonRange);
+        System.out.println(jsonObject);
+
+        System.out.println(new JSONObject(store));
     }
 }
