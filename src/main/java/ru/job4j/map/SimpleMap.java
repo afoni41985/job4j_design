@@ -83,7 +83,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
         }
         int hash = hash(key.hashCode());
         int position = indexFor(hash);
-        if (table[position].key.equals(key) && table[position] != null) {
+        if (table[position] != null && table[position].key.equals(key)) {
             table[position] = null;
             count--;
             modCount++;
