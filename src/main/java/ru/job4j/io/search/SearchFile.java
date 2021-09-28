@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -36,10 +37,26 @@ public class SearchFile {
     }
 
     public static void validArgs(String[] args) {
+        ArgsName arg = ArgsName.of(args);
         if (args.length != 4) {
-            throw new IllegalArgumentException(
-                    "Invalid arguments"
-            );
+            throw new IllegalArgumentException("Incorrect parameters. "
+                    + "-d directory to search,"
+                    + "-n file name, mask,"
+                    + "-t search type: mask search by mask, name by full name match,"
+                    + "-o write the result to a file.");
+        }
+        if (!Files.exists(Path.of(arg.get("d"))) || !Files.isDirectory(Path.of(arg.get("d")))) {
+            throw new IllegalArgumentException("Incorrect directory to search: "
+                    + Path.of(arg.get("d")).toAbsolutePath());
+        }
+        if (arg.get("n") == null) {
+            throw new IllegalArgumentException("No data to search file");
+        }
+        if (arg.get("t") == null) {
+            throw new IllegalArgumentException("No search type");
+        }
+        if (arg.get("o") == null || Files.isDirectory(Path.of(arg.get("o")))) {
+            throw new IllegalArgumentException("Wrong output");
         }
     }
 
