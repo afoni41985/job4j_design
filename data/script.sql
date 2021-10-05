@@ -1,7 +1,11 @@
-select * from car;
-insert into car(price,color,broken) values ('5000.24','red','true');
-select * from car;
-update car set price = '0.0';
-select * from car;
-delete from car;
-select * from car;
+create table laptop(
+id serial primary key,
+color varchar(10),
+age smallint,
+status boolean
+);
+insert into laptop(color,age,status) values ('red', 1, true );
+update laptop set status = false;
+select * from laptop;
+delete from laptop;
+select * from laptop;
