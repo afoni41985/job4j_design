@@ -2,6 +2,7 @@ create table vin(
 id serial primary key,
 vin int
 );
+
 create table cars(
 id serial primary key,
 model_car varchar (50),

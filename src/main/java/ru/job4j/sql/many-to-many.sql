@@ -23,5 +23,4 @@ insert into book_author(book_id,author_id) values (1,2);
 insert into book_author(book_id,author_id) values (1,3);
 insert into book_author(book_id,author_id) values (2,1);
 insert into book_author(book_id,author_id) values (3,1);
-
 select * from book_author;
