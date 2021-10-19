@@ -60,7 +60,7 @@ public class ImportDB {
 
     public static void main(String[] args) throws Exception {
         Properties cfg = new Properties();
-        try (FileInputStream in = new FileInputStream("src/main/resources/jdbc/app.properties")) {
+        try (FileInputStream in = new FileInputStream("src/main/resources/jdbc/spam.properties")) {
             cfg.load(in);
         }
         ImportDB db = new ImportDB(cfg, "src/main/resources/jdbc/dump.txt");
