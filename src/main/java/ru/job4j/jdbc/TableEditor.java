@@ -2,10 +2,7 @@ package ru.job4j.jdbc;
 
 import ru.job4j.io.Config;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.sql.*;
 import java.util.Properties;
 import java.util.StringJoiner;
@@ -23,8 +20,6 @@ public class TableEditor implements AutoCloseable {
 
     private void initConnection() {
         try {
-            properties.load(new FileInputStream(
-                    "src/main/resources/jdbc/app.properties"));
             Class.forName(properties.getProperty("driver"));
             connection = DriverManager.getConnection(
                     properties.getProperty("url"),
@@ -109,6 +104,8 @@ public class TableEditor implements AutoCloseable {
 
     public static void main(String[] args) throws Exception {
         Properties properties = new Properties();
+        InputStream inputStream = new FileInputStream("src/main/resources/jdbc/app.properties");
+        properties.load(inputStream);
         TableEditor table = new TableEditor(properties);
         table.createTable("test_id");
         table.dropTable("test_id");
