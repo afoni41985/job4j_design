@@ -104,8 +104,11 @@ public class TableEditor implements AutoCloseable {
 
     public static void main(String[] args) throws Exception {
         Properties properties = new Properties();
-        InputStream inputStream = new FileInputStream("src/main/resources/jdbc/app.properties");
-        properties.load(inputStream);
+        try (InputStream inputStream = new FileInputStream("src/main/resources/jdbc/app.properties")) {
+            properties.load(inputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         TableEditor table = new TableEditor(properties);
         table.createTable("test_id");
         table.dropTable("test_id");
