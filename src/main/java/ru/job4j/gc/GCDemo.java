@@ -18,8 +18,8 @@ public class GCDemo {
 
     public static void main(String[] args) {
         info();
-        for (int i = 0; i < 14; i++) {
-            new Person(i, "N" + i);
+        for (int i = 0; i < 15; i++) {
+            new User(i, "N" + i);
         }
         System.gc();
         info();
