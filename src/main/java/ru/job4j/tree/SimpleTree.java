@@ -20,6 +20,11 @@ public class SimpleTree<E> implements Tree<E> {
     }
 
     @Override
+    public boolean isBinary() {
+        return false;
+    }
+
+    @Override
     public Optional<Node<E>> findBy(E value) {
         Optional<Node<E>> rsl = Optional.empty();
         Queue<Node<E>> data = new LinkedList<>();

@@ -7,10 +7,12 @@ public class GCTypeDemo {
         Random random = new Random();
         int length = 100;
         String[] data = new String[1_000_000];
-        for (int i = 0; ; i = (i + 1) % data.length) {
+        int i = 0;
+        while (true) {
             data[i] = String.valueOf(
                     (char) random.nextInt(255)
             ).repeat(length);
+            i = (i + 1) % data.length;
         }
     }
 }
