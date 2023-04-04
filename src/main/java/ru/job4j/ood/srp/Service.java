@@ -11,14 +11,14 @@ public class Service {
 
     }
 
-    public void SaveImage() {
+    public void saveImage() {
 
     }
 
-    public void SendEmailMessage() {
+    public void sendEmailMessage() {
 
     }
 
-    public void GenerateSiteMapFile() {
+    public void generateSiteMapFile() {
     }
 }
