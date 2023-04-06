@@ -26,17 +26,20 @@ class ReportHRTest {
         store.add(worker3);
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         ReportHR hr = new ReportHR(store, parser);
-        String expect = "Name; Salary;" +
-                System.lineSeparator() +
-                worker2.getName() + " " +
-                worker2.getSalary() +
-                System.lineSeparator() +
-                worker1.getName() + " " +
-                worker1.getSalary() +
-                System.lineSeparator() +
-                worker3.getName() + " " +
-                worker3.getSalary() +
-                System.lineSeparator();
+        String expect = "Name; Salary;"
+                + System.lineSeparator()
+                + worker2.getName()
+                + " "
+                + worker2.getSalary()
+                + System.lineSeparator()
+                + worker1.getName()
+                + " "
+                + worker1.getSalary()
+                + System.lineSeparator()
+                + worker3.getName()
+                + " "
+                + worker3.getSalary()
+                + System.lineSeparator();
         assertThat(hr.generate(em -> true)).isEqualTo(expect);
 
     }

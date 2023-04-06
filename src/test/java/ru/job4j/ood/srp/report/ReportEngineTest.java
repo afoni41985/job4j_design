@@ -20,13 +20,16 @@ public class ReportEngineTest {
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
         store.add(worker);
         Report engine = new ReportEngine(store, parser);
-        String expect = "Name; Hired; Fired; Salary;" +
-                System.lineSeparator() +
-                worker.getName() + " " +
-                parser.parse(worker.getHired()) + " " +
-                parser.parse(worker.getFired()) + " " +
-                worker.getSalary() +
-                System.lineSeparator();
+        String expect = "Name; Hired; Fired; Salary;"
+                + System.lineSeparator()
+                + worker.getName()
+                + " "
+                + parser.parse(worker.getHired())
+                + " "
+                + parser.parse(worker.getFired())
+                + " "
+                + worker.getSalary()
+                + System.lineSeparator();
         assertThat(engine.generate(em -> true)).isEqualTo(expect);
     }
 }
