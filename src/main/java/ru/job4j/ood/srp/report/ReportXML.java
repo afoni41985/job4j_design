@@ -1,7 +1,8 @@
 package ru.job4j.ood.srp.report;
 
-import ru.job4j.ood.srp.formatter.DateTimeParser;
+
 import ru.job4j.ood.srp.model.Employee;
+import ru.job4j.ood.srp.model.Employees;
 import ru.job4j.ood.srp.store.MemStore;
 import ru.job4j.ood.srp.store.Store;
 
@@ -20,11 +21,10 @@ public class ReportXML implements Report {
 
     public ReportXML(Store store) throws JAXBException {
 
-        JAXBContext context = JAXBContext.newInstance(Employee.class);
+        JAXBContext context = JAXBContext.newInstance(Employees.class);
         this.marshaller = context.createMarshaller();
         this.store = store;
     }
-
 
 
     @Override
@@ -37,11 +37,8 @@ public class ReportXML implements Report {
         }
 
         try (StringWriter writer = new StringWriter()) {
-            for (Employee employee : store.findBy(filter)) {
-                marshaller.marshal(employee, writer);
-                stringXML = writer.getBuffer().toString();
-            }
-
+            marshaller.marshal(new Employees(store.findBy(filter)), writer);
+            stringXML = writer.getBuffer().toString();
         } catch (Exception e) {
             e.printStackTrace();
         }

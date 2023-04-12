@@ -5,16 +5,15 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-@XmlRootElement(name = "employee")
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Employee {
-    @XmlAttribute
+
     private String name;
-    @XmlTransient
+
     private Calendar hired;
-    @XmlTransient
+
     private Calendar fired;
-    @XmlAttribute
+
     private double salary;
 
     public Employee() {

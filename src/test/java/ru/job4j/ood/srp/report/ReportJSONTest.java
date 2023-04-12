@@ -16,43 +16,103 @@ class ReportJSONTest {
     void whenJSONGenerate() {
         MemStore store = new MemStore();
         Calendar now = Calendar.getInstance();
-        Employee worker = new Employee("Ivan", now, now, 100);
-        store.add(worker);
-        ReportJSON reportJSON = new ReportJSON(store);
-        String expect = "[{"
+        Employee worker1 = new Employee("Ivan", now, now, 100);
+        Employee worker2 = new Employee("Divan", now, now, 200);
+        store.add(worker1);
+        store.add(worker2);
+        Report reportJSON = new ReportJSON(store);
+        String expect = "["
+                + "{"
                 + "\"name\":\""
-                + worker.getName()
-                + "\",\"hired\":"
-                + "{\"year\":"
-                + worker.getHired().get(Calendar.YEAR)
-                + ",\"month\":"
-                + worker.getHired().get(Calendar.MONTH)
-                + ",\"dayOfMonth\":"
-                + worker.getHired().get(Calendar.DAY_OF_MONTH)
-                + ",\"hourOfDay\":"
-                + worker.getHired().get(Calendar.HOUR_OF_DAY)
-                + ",\"minute\":"
-                + worker.getHired().get(Calendar.MINUTE)
-                + ",\"second\":"
-                + worker.getHired().get(Calendar.SECOND)
+                + worker1.getName()
+                + "\","
+                + "\"hired\":{"
+                + "\"year\":"
+                + worker1.getHired().get(Calendar.YEAR)
+                + ","
+                + "\"month\":"
+                + worker1.getHired().get(Calendar.MONTH)
+                + ","
+                + "\"dayOfMonth\":"
+                + worker1.getHired().get(Calendar.DAY_OF_MONTH)
+                + ","
+                + "\"hourOfDay\":"
+                + worker1.getHired().get(Calendar.HOUR_OF_DAY)
+                + ","
+                + "\"minute\":"
+                + worker1.getHired().get(Calendar.MINUTE)
+                + ","
+                + "\"second\":"
+                + worker1.getHired().get(Calendar.SECOND)
+                + "},"
+                + "\"fired\":{"
+                + "\"year\":"
+                + worker1.getFired().get(Calendar.YEAR)
+                + ","
+                + "\"month\":"
+                + worker1.getFired().get(Calendar.MONTH)
+                + ","
+                + "\"dayOfMonth\":"
+                + worker1.getFired().get(Calendar.DAY_OF_MONTH)
+                + ","
+                + "\"hourOfDay\":"
+                + worker1.getFired().get(Calendar.HOUR_OF_DAY)
+                + ","
+                + "\"minute\":"
+                + worker1.getFired().get(Calendar.MINUTE)
+                + ","
+                + "\"second\":"
+                + worker1.getFired().get(Calendar.SECOND)
+                + "},"
+                + "\"salary\":"
+                + worker1.getSalary()
                 + "}"
-                + ",\"fired\":"
-                + "{\"year\":"
-                + worker.getHired().get(Calendar.YEAR)
-                + ",\"month\":"
-                + worker.getHired().get(Calendar.MONTH)
-                + ",\"dayOfMonth\":"
-                + worker.getHired().get(Calendar.DAY_OF_MONTH)
-                + ",\"hourOfDay\":"
-                + worker.getHired().get(Calendar.HOUR_OF_DAY)
-                + ",\"minute\":"
-                + worker.getHired().get(Calendar.MINUTE)
-                + ",\"second\":"
-                + worker.getHired().get(Calendar.SECOND)
-                + "}"
-                + ",\"salary\":"
-                + worker.getSalary()
-                + "}]";
-        assertThat(reportJSON.generate(em -> true)).isEqualTo(expect);
+                + ","
+                + "{"
+                + "\"name\":\""
+                + worker2.getName()
+                + "\","
+                + "\"hired\":{"
+                + "\"year\":"
+                + worker2.getHired().get(Calendar.YEAR)
+                + ","
+                + "\"month\":"
+                + worker2.getHired().get(Calendar.MONTH)
+                + ","
+                + "\"dayOfMonth\":"
+                + worker2.getHired().get(Calendar.DAY_OF_MONTH)
+                + ","
+                + "\"hourOfDay\":"
+                + worker2.getHired().get(Calendar.HOUR_OF_DAY)
+                + ","
+                + "\"minute\":"
+                + worker2.getHired().get(Calendar.MINUTE)
+                + ","
+                + "\"second\":"
+                + worker2.getHired().get(Calendar.SECOND)
+                + "},"
+                + "\"fired\":{"
+                + "\"year\":"
+                + worker2.getFired().get(Calendar.YEAR)
+                + ","
+                + "\"month\":"
+                + worker2.getFired().get(Calendar.MONTH)
+                + ","
+                + "\"dayOfMonth\":"
+                + worker2.getFired().get(Calendar.DAY_OF_MONTH)
+                + ","
+                + "\"hourOfDay\":"
+                + worker2.getFired().get(Calendar.HOUR_OF_DAY)
+                + ","
+                + "\"minute\":"
+                + worker2.getFired().get(Calendar.MINUTE)
+                + ","
+                + "\"second\":"
+                + worker2.getFired().get(Calendar.SECOND)
+                + "},"
+                + "\"salary\":"
+                + worker2.getSalary() + "}"
+                + "]";
+        assertThat(reportJSON.generate(employee -> true)).isEqualTo(expect);
     }
 }
