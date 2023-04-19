@@ -9,7 +9,7 @@ public class SimpleLinkedList<E> implements List<E> {
     private int modCount = 0;
 
     @Override
-    public void add(E value) {
+    public boolean add(E value) {
         if (root == null) {
             root = new Node<>(value, null);
             fstNode = root;
@@ -22,6 +22,7 @@ public class SimpleLinkedList<E> implements List<E> {
         }
         size++;
         modCount++;
+        return false;
     }
 
     @Override
@@ -38,10 +39,10 @@ public class SimpleLinkedList<E> implements List<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<E>() {
+        return new Iterator<>() {
             private Node<E> current = fstNode;
-            private int expectedMod = modCount;
-            private int count = 0;
+            private final int expectedMod = modCount;
+            private final int count = 0;
 
             @Override
             public boolean hasNext() {

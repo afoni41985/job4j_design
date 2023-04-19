@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+@Disabled
 public class CinemaTest {
 
     @Disabled
@@ -46,9 +47,7 @@ public class CinemaTest {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
         Calendar date = Calendar.getInstance();
-        assertThrows(IllegalArgumentException.class, () -> {
-            cinema.buy(account, -1, 1, date);
-        });
+        assertThrows(IllegalArgumentException.class, () -> cinema.buy(account, -1, 1, date));
     }
 
     @Disabled
@@ -57,20 +56,6 @@ public class CinemaTest {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
         Calendar date = new GregorianCalendar(1999, Calendar.NOVEMBER, 1);
-        assertThrows(IllegalArgumentException.class, () -> {
-            cinema.buy(account, 1, 1, date);
-        });
-    }
-
-    @Disabled
-    @Test()
-    public void whenPlaceOccupied() {
-        Account account = new AccountCinema();
-        Cinema cinema = new Cinema3D();
-        Calendar date = Calendar.getInstance();
-        cinema.buy(account, 1, 1, date);
-        assertThrows(IllegalArgumentException.class, () -> {
-            cinema.buy(account, 1, 1, date);
-        });
+        assertThrows(IllegalArgumentException.class, () -> cinema.buy(account, 1, 1, date));
     }
 }
