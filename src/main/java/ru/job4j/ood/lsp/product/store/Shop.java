@@ -8,7 +8,7 @@ public class Shop extends AbstractStore {
         boolean rsl = false;
         if (food.getExpirePercent() > minExpiration && food.getExpirePercent() < maxExpiration) {
             rsl = true;
-        } else if (food.getExpirePercent() > maxExpiration && food.getExpirePercent() < minExpiration) {
+        } else if (food.getExpirePercent() > maxExpiration && food.getExpirePercent() < expiredExpiration) {
             food.setPrice(food.getPriceWithDiscount());
             rsl = true;
         }
