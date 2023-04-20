@@ -5,8 +5,7 @@ import java.util.Objects;
 public class Vehicle {
     protected int size;
 
-    public Vehicle(int size) {
-        this.size = size;
+    public Vehicle() {
     }
 
     public int getSize() {

@@ -2,14 +2,12 @@ package ru.job4j.ood.lsp.product.parkingspace;
 
 import ru.job4j.ood.lsp.product.parkingspace.model.Vehicle;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CarParking implements Parking {
 
-    private final List<Vehicle> parking = new ArrayList<>();
+    private final Vehicle[] parking;
 
     public CarParking(int carPlace, int truckPlace) {
+        this.parking = new Vehicle[carPlace + truckPlace];
     }
 
     @Override
@@ -18,7 +16,9 @@ public class CarParking implements Parking {
     }
 
     @Override
-    public List<Vehicle> getVehicleList() {
+    public Vehicle[] getVehicleList() {
         return parking;
     }
+
+
 }

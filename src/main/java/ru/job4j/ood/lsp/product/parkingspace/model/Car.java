@@ -2,9 +2,10 @@ package ru.job4j.ood.lsp.product.parkingspace.model;
 
 public class Car extends Vehicle {
 
-    public Car(int size) {
-        super(size);
+    public Car() {
+        this.size = 1;
     }
+
     @Override
     public int getSize() {
         return super.getSize();
