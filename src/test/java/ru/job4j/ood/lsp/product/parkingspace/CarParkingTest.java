@@ -1,7 +1,8 @@
 package ru.job4j.ood.lsp.product.parkingspace;
 
-import org.junit.Ignore;
+
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.lsp.product.parkingspace.model.Car;
 import ru.job4j.ood.lsp.product.parkingspace.model.Truck;
@@ -11,7 +12,7 @@ import ru.job4j.ood.lsp.product.parkingspace.model.Vehicle;
 class CarParkingTest {
 
 
-    @Ignore
+    @Disabled
     @Test
     void whenAdd1TruckAnd1CarInCarParking() {
         Vehicle car = new Car();
@@ -22,7 +23,7 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 2);
     }
 
-    @Ignore
+    @Disabled
     @Test
     void whenAddOnly2Car() {
         Vehicle car1 = new Car();
@@ -33,7 +34,7 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 2);
     }
 
-    @Ignore
+    @Disabled
     @Test
     void whenAddOnly2Truck() {
         Vehicle truck = new Truck();
@@ -44,7 +45,7 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 2);
     }
 
-    @Ignore
+    @Disabled
     @Test
     void whenAdd1TruckInCarPlace() {
         Vehicle truck = new Truck();
@@ -55,7 +56,7 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 2);
     }
 
-    @Ignore
+    @Disabled
     @Test
     void whenAdd1CarInTruckPlace() {
         Vehicle car = new Car();
@@ -66,7 +67,7 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 1);
     }
 
-    @Ignore
+    @Disabled
     @Test
     void whenThereAreNoSeats() {
         Vehicle car = new Car();
