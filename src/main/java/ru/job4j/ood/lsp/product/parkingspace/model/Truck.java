@@ -1,8 +1,7 @@
 package ru.job4j.ood.lsp.product.parkingspace.model;
 
 public class Truck extends Vehicle {
-    public Truck(int size) {
-        this.size = 2;
+    public Truck() {
     }
 
     @Override

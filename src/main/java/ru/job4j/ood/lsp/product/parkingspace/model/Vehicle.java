@@ -6,7 +6,9 @@ public class Vehicle {
     protected int size;
 
     public Vehicle() {
+
     }
+
 
     public int getSize() {
         return size;
