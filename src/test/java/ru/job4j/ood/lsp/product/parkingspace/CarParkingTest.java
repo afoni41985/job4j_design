@@ -12,7 +12,6 @@ import ru.job4j.ood.lsp.product.parkingspace.model.Vehicle;
 class CarParkingTest {
 
 
-    @Disabled
     @Test
     void whenAdd1TruckAnd1CarInCarParking() {
         Vehicle car = new Car();
@@ -23,7 +22,7 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 2);
     }
 
-    @Disabled
+
     @Test
     void whenAddOnly2Car() {
         Vehicle car1 = new Car();
@@ -34,29 +33,27 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 2);
     }
 
-    @Disabled
+
     @Test
     void whenAddOnly2Truck() {
         Vehicle truck = new Truck();
         Vehicle truck1 = new Truck();
-        Parking parking = new CarParking(2, 0);
+        Parking parking = new CarParking(0, 2);
         Assertions.assertTrue(parking.add(truck));
         Assertions.assertTrue(parking.add(truck1));
         Assertions.assertEquals(parking.getVehicleList().size(), 2);
     }
 
-    @Disabled
+
     @Test
     void whenAdd1TruckInCarPlace() {
-        Vehicle truck = new Truck();
         Vehicle truck1 = new Truck();
-        Parking parking = new CarParking(1, 1);
-        Assertions.assertTrue(parking.add(truck));
+        Parking parking = new CarParking(2, 0);
         Assertions.assertTrue(parking.add(truck1));
-        Assertions.assertEquals(parking.getVehicleList().size(), 2);
+        Assertions.assertEquals(parking.getVehicleList().size(), 1);
     }
 
-    @Disabled
+
     @Test
     void whenAdd1CarInTruckPlace() {
         Vehicle car = new Car();
@@ -67,7 +64,7 @@ class CarParkingTest {
         Assertions.assertEquals(parking.getVehicleList().size(), 1);
     }
 
-    @Disabled
+
     @Test
     void whenThereAreNoSeats() {
         Vehicle car = new Car();
